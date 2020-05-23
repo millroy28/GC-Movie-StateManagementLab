@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "AddToCart";
+}
+@model string[]
+
+@if (Model[0] == "Movie already in cart!")
+{
+    <h1>Confirm Selection</h1>
+    <h4>@Model[0]</h4>
+}
+else
+{
+    <h1>Confirm Selection</h1>
+    <h4>Selected Movie: @Model[0]</h4>
+    <p><b>Rental Price: </b>@Model[1]  <a href="/Movie/AddToCart?name=@Model[0]">Add Rental to Cart</a></p>
+}
+
+<p><a href="/Movie/ViewMovies">Return to Movie Selection</a></p>
+

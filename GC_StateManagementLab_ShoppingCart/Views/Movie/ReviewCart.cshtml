@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "ReviewCart";
+}
+
+
+@model List<Movie>
+
+<h1>Checkout</h1>
+@{
+    double total = 0;
+}
+
+@if (Model.Count == 0)
+{
+    <h2>Cart Empty</h2>
+    <p><a href="/Movie/ViewMovies">Return to Movie Selection</a></p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Runtime</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+
+
+        @{
+            foreach (var movie in Model)
+            {
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>@movie.Description</td>
+                    <td>@movie.RunTime</td>
+                    <td>$@movie.RentalPrice</td>
+                    <td><a href="/Movie/RemoveMovie?name=@movie.Title">Remove</a></td>
+                </tr>
+                total += movie.RentalPrice;
+            }
+        }
+
+    </table>
+    <h5>Subtotal: <b>$@total</b></h5>
+    <p><a href="/Movie/ViewMovies">Return to Movie Selection</a></p>
+    <p><a href="/Movie/Checkout">Continue to Checkout</a></p>
+}
+

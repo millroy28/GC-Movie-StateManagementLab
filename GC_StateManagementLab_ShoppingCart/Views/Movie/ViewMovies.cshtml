@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "ViewMovies";
+}
+
+@model List<Movie>
+
+<h1>Movies Available to Rent</h1>
+
+
+<table style="width: 100%">
+    <colgroup>
+        <col span="1" style="width: 25%;">
+        <col span="1" style="width: 40%;">
+        <col span="1" style="width: 10%;" >
+        <col span="1" style="width: 15%;">
+        <col span="1" style="width: 10%;">
+    </colgroup>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Runtime</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td>@movie.Title</td>
+            <td>@movie.Description</td>
+            <td>@movie.RunTime</td>
+            <td>$@movie.RentalPrice</td>
+            <td><a href = "/Movie/ConfirmMovie?name=@movie.Title">Rent Me!</a></td>
+        </tr>
+    }
+</table>
+
+<a href ="/Movie/ReviewCart">Review Cart</a>
+
